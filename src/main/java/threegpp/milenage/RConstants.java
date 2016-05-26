@@ -18,6 +18,8 @@
  */
 package threegpp.milenage;
 
+import java.util.Arrays;
+
 /**
  * <h1>RConstants</h1>
  *
@@ -39,33 +41,34 @@ public class RConstants extends Constants<Byte> {
     /**
      * Constructs object from given R-constant values
      *
-     * @param constants Exactly five R-constants values
-     * @throws IllegalArgumentException  If number of arguments does not equal {@link Milenage#CONST_NUM}<p>
-     *          or if passed values are not between<p>
+     * @param r1  Value of constant #
+     * @param r2  Value of constant #
+     * @param r3  Value of constant #
+     * @param r4  Value of constant #
+     * @param r5  Value of constant #
+     * @throws IllegalArgumentException  If passed values are not between<p>
      *         {@link RConstants#LOWER_BOUND} and {@link RConstants#UPPER_BOUND} (inclusive).
      */
-    public RConstants(Byte... constants)
+    public RConstants(byte r1, byte r2, byte r3, byte r4, byte r5)
                 throws IllegalArgumentException {
-        super(constants);
+        super(r1, r2, r3, r4, r5);
     }
 
     /**
      * Default constructor
      *
      * Creates object from sample values given in 3GPP TS 35.206
-     * @throws IllegalArgumentException  If number of arguments does not equal {@link Milenage#CONST_NUM}<p>
-     *          or if passed values are not between<p>
-     *         {@link RConstants#LOWER_BOUND} and {@link RConstants#UPPER_BOUND} (inclusive).
      */
-    public RConstants() throws IllegalArgumentException {
+    public RConstants() {
         this(R1_SAMPLE, R2_SAMPLE, R3_SAMPLE, R4_SAMPLE, R5_SAMPLE);
     }
 
     @Override
-    protected void validateArgs(Byte [] args) {
-        super.validateArgs(args);
+    protected void validateArgs(Byte r1, Byte r2, Byte r3, Byte r4, Byte r5)
+            throws IllegalArgumentException {
+        super.validateArgs(r1, r2, r3, r4, r5);
 
-        for(byte r: args) {
+        for(byte r: Arrays.asList(r1, r2, r3, r4, r5)) {
             if(!isConstantValid(r)) {
                 throw new IllegalArgumentException(
                         "R constant value must be between"

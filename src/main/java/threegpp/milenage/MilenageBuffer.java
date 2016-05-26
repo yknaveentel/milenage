@@ -61,14 +61,6 @@ public interface MilenageBuffer<T> {
     byte [] toBytes();
 
     /**
-     * Concatenates two buffers into one.
-     *
-     * @param that  Another buffer.
-     * @return  A new buffer containing contents of this buffer immediately followed by contents of that.
-     */
-//    MilenageBuffer<T> concat(MilenageBuffer<T> that);
-
-    /**
      * Takes number of bytes beginning from given offset.
      *
      * @param  args  An array of even integers where each pair
@@ -85,21 +77,4 @@ public interface MilenageBuffer<T> {
      * @return  Internal buffer object (probably its copy)
      */
     T getRawBuffer();
-
-    /**
-     * Creates {@link javax.crypto.Cipher} with the underlying buffer as a key.
-     *
-     * @param cipherId  String representing {@link javax.crypto.Cipher} transformation
-     * @param algoId  String algorithm as described in {@link javax.crypto.spec.SecretKeySpec#SecretKeySpec(byte[], String)}
-     *
-     * @return  {@link javax.crypto.Cipher} object.
-     */
-    Cipher createCipher(String cipherId, String algoId);
-
-    /**
-     * Creates {@link javax.crypto.Cipher} with default settings (<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Rijndael</a> ciphering).
-     *
-     * @return  {@link javax.crypto.Cipher} object.
-     */
-    Cipher createCipher();
 }

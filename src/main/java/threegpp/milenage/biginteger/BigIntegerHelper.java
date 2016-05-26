@@ -33,6 +33,7 @@ import java.math.BigInteger;
  */
 public class BigIntegerHelper {
     static public BigInteger unhexlify(String hexString) {
+        // Only creating BigInteger from hex string with leading zeroes is working properly
         return new BigInteger("00" + hexString, 16);
     }
 

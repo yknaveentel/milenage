@@ -24,12 +24,7 @@ import threegpp.milenage.MilenageBuffer;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import java.math.BigInteger;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /**
@@ -65,8 +60,7 @@ public class BigIntegerBuffer implements MilenageBuffer<BigInteger> {
             throw new IllegalArgumentException("Hex value have to represent "
                                                 + Milenage.BLOCK_LEN_BYTES + "bytes");
         }
-        // Only creating BigInteger from hex string with leading zeroes is working properly
-        buffer = BigIntegerHelper.unhexlify("00" + hexVal);
+        buffer = BigIntegerHelper.unhexlify(hexVal);
     }
 
     /**
@@ -110,14 +104,6 @@ public class BigIntegerBuffer implements MilenageBuffer<BigInteger> {
             throw new RuntimeException(e);
         }
     }
-
-//    /**
-//     * {@inheritDoc}
-//     */
-//    @Override
-//    public MilenageBuffer<BigInteger> concat(MilenageBuffer<BigInteger> that) {
-//        return null;
-//    }
 
     /**
      * {@inheritDoc}
@@ -170,34 +156,6 @@ public class BigIntegerBuffer implements MilenageBuffer<BigInteger> {
      * {@inheritDoc}
      */
     @Override
-    public Cipher createCipher(String cipherId, String algoId) {
-        try {
-            Key key = new SecretKeySpec(toBytes(), algoId);
-
-            Cipher cipher = Cipher.getInstance(cipherId);
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-
-            return cipher;
-
-        } catch (NoSuchAlgorithmException
-                | NoSuchPaddingException
-                | InvalidKeyException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Cipher createCipher() {
-        return createCipher("AES/ECB/NoPadding", "AES");
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public String toString() {
         return hexlify(toBytes());
     }
@@ -224,7 +182,7 @@ public class BigIntegerBuffer implements MilenageBuffer<BigInteger> {
      * @param newLength  New length of buffer, must be greater than the old one.
      * @return  New array with zero bytes at the head content from {@code src} in the rest.
      */
-    public static byte [] arrayPadLeft(byte [] src, int newLength) {
+    private static byte [] arrayPadLeft(byte [] src, int newLength) {
         byte [] result = new byte [newLength];
 
         System.arraycopy(src, 0, result, result.length - src.length, src.length);

@@ -19,7 +19,7 @@
 package threegpp.milenage;
 
 /**
- * <h1>MilenageBufferBuilder</h1>
+ * <h1>MilenageBufferFactory</h1>
  * <p>
  * An interface to build {@link threegpp.milenage.MilenageBuffer} objects.
  *
@@ -27,7 +27,7 @@ package threegpp.milenage;
  * @version 1.0.0
  * @since 21.02.16
  */
-public interface MilenageBufferBuilder<T> {
+public interface MilenageBufferFactory<B extends MilenageBuffer> {
 
     /**
      * Create {@link threegpp.milenage.MilenageBuffer} object from the array of bytes.
@@ -35,7 +35,7 @@ public interface MilenageBufferBuilder<T> {
      * @param data  Array of bytes with length equal to {@link Milenage#BLOCK_LEN_BYTES}.
      * @return  {@link threegpp.milenage.MilenageBuffer} object.
      */
-    MilenageBuffer<T> create(byte [] data);
+    B create(byte [] data);
 
     /**
      * Create {@link threegpp.milenage.MilenageBuffer} object from a hex string.
@@ -43,15 +43,7 @@ public interface MilenageBufferBuilder<T> {
      * @param hexString  A hexadecimal string representation of a buffer with length {@link Milenage#BLOCK_LEN_BYTES} * 2.
      * @return  {@link threegpp.milenage.MilenageBuffer} object.
      */
-    MilenageBuffer<T> create(String hexString);
-
-    /**
-     * Create {@link threegpp.milenage.MilenageBuffer} object.
-     *
-     * @param value  Value of base type.
-     * @return  {@link threegpp.milenage.MilenageBuffer} object.
-     */
-    MilenageBuffer<T> create(T value);
+    B create(String hexString);
 
     /**
      * Create {@link threegpp.milenage.MilenageBuffer} object from SQN and AMF values.
@@ -60,22 +52,31 @@ public interface MilenageBufferBuilder<T> {
      * @param amf  Array of bytes with length equal to {@link Milenage#AMF_LEN_BYTES}.
      * @return  {@link threegpp.milenage.MilenageBuffer} object.
      */
-    MilenageBuffer<T> create(byte [] sqn, byte [] amf);
+    B create(byte [] sqn, byte [] amf);
 
     /**
-     * Create an array of {@link Milenage#CONST_NUM} {@link threegpp.milenage.MilenageBuffer} objects
+     * Create an array of {@link Constants#CONST_NUM} {@link threegpp.milenage.MilenageBuffer} objects
      * containing example C-constants values according to 3GPP 35.206 (chapter 4.1).
      * <p>
      *
      * @return  An array of {@link threegpp.milenage.MilenageBuffer} object.
      */
-    MilenageBuffer<T> [] createSampleCConstants();
+    B[] createSampleCConstants();
 
     /**
      * Create an array of {@link threegpp.milenage.MilenageBuffer} objects.
      *
-     * @param buffers  {@link threegpp.milenage.MilenageBuffer} objects to put into result array.
-     * @return  An array of {@link threegpp.milenage.MilenageBuffer} objects.
+     * @param buffers  Array of byte arrays where each element represents a contents of single buffer.
+     * @return  Array of {@link MilenageBuffer} objects
      */
-    @SuppressWarnings("unchecked") MilenageBuffer<T> [] createArray(MilenageBuffer<T>... buffers);
+    B[] createArray(byte []... buffers);
+
+    /**
+     * Create an array of {@link threegpp.milenage.MilenageBuffer} objects.
+     *
+     * @param buffers  Array of hex strings where each element represents a contents of single buffer.
+     * @return  Array of {@link MilenageBuffer} objects
+     */
+    B[] createArray(String... buffers);
+
 }

@@ -18,6 +18,8 @@
  */
 package threegpp.milenage;
 
+import java.util.Collections;
+
 /**
  * <h1>CConstants</h1>
  *
@@ -25,9 +27,36 @@ package threegpp.milenage;
  * @version 1.0.0
  * @since 11.02.16
  */
-public class CConstants<T> extends Constants<MilenageBuffer<T>>{
+public class CConstants<T extends MilenageBuffer> extends Constants<T>{
 
-    public CConstants(MilenageBuffer<T> [] args) {
-        super(args);
+    /**
+     * Constructor.
+     *
+     * @param c  Array of values of C constants (C1...C5)
+     */
+    @SafeVarargs
+    public CConstants(T... c) {
+        super(c[0], c[1], c[2], c[3], c[4]);
+    }
+
+    public CConstants(byte [] c1, byte [] c2, byte [] c3, byte [] c4, byte [] c5,
+                      MilenageBufferFactory<T> factory) {
+        super(factory.create(c1),
+                factory.create(c2),
+                factory.create(c3),
+                factory.create(c4),
+                factory.create(c5));
+    }
+
+    /**
+     * Create object containing sample (AKA default) Ci constant values according to
+     * 3GPP TS 35.206 (4.1)
+     *
+     * @param factory  {@link MilenageBufferFactory} object.
+     */
+    public CConstants(MilenageBufferFactory<T> factory) {
+
+        T [] constants = factory.createSampleCConstants();
+        Collections.addAll(list, constants);
     }
 }

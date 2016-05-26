@@ -34,33 +34,40 @@ import java.util.List;
  */
 public class Constants<T> {
 
+    public static final short CONST_NUM = 5;
     protected final List<T> list;
 
     /**
      * Constructor
      *
-     * @param args  Array of {@value Milenage#CONST_NUM} constant values.
+     * @param const1  Constant #1.
+     * @param const2  Constant #2.
+     * @param const3  Constant #3.
+     * @param const4  Constant #4.
+     * @param const5  Constant #5.
      */
-    public Constants(T[] args) throws IllegalArgumentException {
-        validateArgs(args);
-        list = new ArrayList<>(Arrays.asList(args));
+    public Constants(T const1, T const2, T const3, T const4, T const5)
+        throws IllegalArgumentException {
+        validateArgs(const1, const2, const3, const4, const5);
+        list = Arrays.asList(const1, const2, const3, const4, const5);
+    }
+
+    protected Constants() {
+        list = new ArrayList<>(CONST_NUM);
     }
 
     /**
      * Validates values of initializers according to domain specific rules.
      *
-     * @param args  Array of {@value Milenage#CONST_NUM} constant values.
+     * @param const1  Constant #1.
+     * @param const2  Constant #2.
+     * @param const3  Constant #3.
+     * @param const4  Constant #4.
+     * @param const5  Constant #5.
      */
-    protected void validateArgs(T[] args) {
-        if(args.length != Milenage.CONST_NUM) {
-            throw new IllegalArgumentException(
-                    getClass().getSimpleName()
-                            + "You have to pass exactly "
-                            + Milenage.CONST_NUM
-                            + " Cx constants"
-            );
-        }
-    }
+    protected void validateArgs(T const1, T const2,
+                                T const3, T const4, T const5)
+            throws IllegalArgumentException {}
 
     /**
      * Accessor for a particular constant.
