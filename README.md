@@ -1,6 +1,6 @@
 # Milenage
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT) ![version: 1.0.0](https://img.shields.io/badge/version-1.0.0-green.svg?style=flat)
 
 Java™ library designed to support [3GPP](http://www.3gpp.org)™ Milenage algorithm calculations according to **3GPP TS 35.206**.
 Has written from scratch i.e. is not based on C sourse code from [3GPP](http://www.3gpp.org)™ TS 35.206 Annex 3.
