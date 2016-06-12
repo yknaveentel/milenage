@@ -22,6 +22,28 @@ Has written from scratch i.e. is not based on C sourse code from [3GPP](http://w
     * call a full set of functions at once, in this case a call of every function _can_ be asynchronous.
         
         It's configurable through `ExecutorService` object.
+        
+## Requirements
+
+Java 1.7 or higher.
+
+## Download
+
+#### Gradle
+
+```gradle
+compile 'com.github.brake.threegpp:milenage:1.0.0'
+```
+
+#### Maven
+
+```xml
+<dependency>
+  <groupId>com.github.brake.threegpp</groupId>
+  <artifactId>milenage</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
 ## Usage
 ### Basic
