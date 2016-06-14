@@ -5,6 +5,16 @@
 Java™ library designed to support [3GPP](http://www.3gpp.org)™ Milenage algorithm calculations according to **3GPP TS 35.206**.
 Has written from scratch i.e. is not based on C sourse code from [3GPP](http://www.3gpp.org)™ TS 35.206 Annex 3.
 
+### Table of Contents
+
+* [Features](#features)
+* [Requirements](#requirements)
+* [Download](#download)
+* [Usage](#usage)
+* [Documentation](#documentation)
+* [License](#license)
+* [Alternatives](#alternatives)
+
 ## Features
  
  * <code>OP<sub>c</sub></code> calculation based on `OP` and `K`
@@ -104,3 +114,7 @@ TBD
 Copyright © 2015-2016 Constantin Roganov
 
 Distributed under the [MIT License](https://opensource.org/licenses/MIT).  
+
+## Alternatives
+
+1. [This project](http://www.ict-adamantium.eu/SIP-Agent/) has a Milenage implementation (LGPL 2.1)  [Javadoc](http://www.ict-adamantium.eu/SIP-Agent/javadoc/net/java/sip/communicator/sip/security/Milenage.html).
