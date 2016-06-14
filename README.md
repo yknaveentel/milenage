@@ -1,4 +1,4 @@
-# Milenage
+# Milenage for Java
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT) ![version: 1.0.0](https://img.shields.io/badge/version-1.0.0-green.svg?style=flat)
 
