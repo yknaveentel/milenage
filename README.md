@@ -1,6 +1,6 @@
 # Milenage for Java
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT) ![version: 1.0.0](https://img.shields.io/badge/version-1.0.0-green.svg?style=flat)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT) [![GitHub version](https://badge.fury.io/gh/brake%2Fmilenage.svg)](https://badge.fury.io/gh/brake%2Fmilenage) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.brake.threegpp/milenage/badge.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.github.brake.threegpp/milenage) ![Java version 1.7+](https://img.shields.io/badge/Java_version-1.7+-green.svg?style=flat-square) 
 
 Java™ library designed to support [3GPP](http://www.3gpp.org)™ Milenage algorithm calculations according to **3GPP TS 35.206**.
 Has written from scratch i.e. is not based on C sourse code from [3GPP](http://www.3gpp.org)™ TS 35.206 Annex 3.
