@@ -2,7 +2,7 @@ group 'com.github.brake.threegpp'
 version '1.0.0'
 
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 sourceCompatibility = 1.7
@@ -14,7 +14,8 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -35,50 +36,5 @@ artifacts {
 
 signing {
     sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            repository(url: sonatypeRepositoryUrl) {
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
-            }
-
-            pom.project {
-                groupId = project.group
-                artifactId 'milenage'
-                version version
-                name = project.name
-
-                description 'Java™ library designed to support 3GPP™ Milenage algorithm calculations according to 3GPP TS 35.206'
-                url 'https://github.com/brake/milenage'
-
-//                packaging 'jar'
-
-                inceptionYear '2016'
-                licenses {
-                    license {
-                        name 'The MIT License'
-                        url 'https://opensource.org/licenses/MIT'
-                        distribution 'repo'
-                    }
-                }
-                scm {
-                    url 'https://github.com/brake/milenage'
-                    connection 'scm:git:git@github.com:brake/milenage.git'
-                    developerConnection 'scm:git:git@github.com:brake/milenage.git'
-                }
-
-                developers {
-                    developer {
-                        id 'brake'
-                        name 'Constantin Roganov'
-                        url 'https://github.com/brake'
-                    }
-                }
-            }
-        }
-    }
 }
 
